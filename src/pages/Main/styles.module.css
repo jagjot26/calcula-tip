@@ -33,7 +33,7 @@
 
 .buttonsGridContainer {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5vmin;
 }
 
@@ -74,13 +74,14 @@
   }
   .leftHalf {
     width: 100%;
-    row-gap: 2rem;
+    row-gap: 3rem;
   }
   .rightHalf {
     width: 100%;
+    margin-top: 2rem;
   }
   .buttonsGridContainer {
     gap: 1rem;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
   }
 }

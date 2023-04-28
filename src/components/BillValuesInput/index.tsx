@@ -5,9 +5,9 @@ import Typography from '../UI/Typography'
 import { ReactComponent as DollarIcon } from '../../assets/images/icon-dollar.svg'
 import { ReactComponent as PeopleIcon } from '../../assets/images/icon-person.svg'
 import Button from '../UI/Button'
-import { BillInfoType } from '../../pages/Main'
+import { BillInfoType } from '../../pages/Main/types'
 
-const tipPercents = [5, 10, 15, 25, 50]
+const tipPercents = ['5', '10', '15', '25', '50']
 interface BillValuesInputProps {
   billInfo: BillInfoType
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -25,7 +25,6 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
   return (
     <div className={styles.leftHalf}>
       <div>
-        <Typography variant="body1">Bill</Typography>
         <Input
           icon={<DollarIcon />}
           name="billAmount"
@@ -35,6 +34,7 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
           min="0"
           error={errors.billAmount}
           autoFocus
+          label="Bill"
         />
       </div>
       <div>
@@ -49,10 +49,19 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
               >{`${percent}%`}</Button>
             </div>
           ))}
+          <div>
+            <Input
+              min="0"
+              type="number"
+              name="tipPercent"
+              value={tipPercents.includes(tipPercent) ? '' : tipPercent}
+              placeholder="Custom"
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
       <div>
-        <Typography variant="body1">Number of People</Typography>
         <Input
           icon={<PeopleIcon />}
           name="numberOfPeople"
@@ -61,6 +70,7 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
           value={numberOfPeople}
           min="0"
           error={errors.numberOfPeople}
+          label="Number of People"
         />
       </div>
     </div>

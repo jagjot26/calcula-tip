@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styles from '../../pages/Main/styles.module.css'
 import Button from '../UI/Button'
 import Typography from '../UI/Typography'
-import { BillInfoType } from '../../pages/Main'
+import { BillInfoType} from '../../pages/Main/types'
 import useCalculatedValues from './hooks/useCalculatedValues'
 
 interface PerPersonValuesProps {
