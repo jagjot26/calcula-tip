@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Frontend Mentor - Tip calculator app solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX).
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Calculate the correct tip and total cost of the bill per person
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![](./screenshot.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Solution URL: [Github](https://your-solution-url.com)
+- Live Site URL: [Vercel](https://your-live-site-url.com)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Semantic HTML5 markup
+- CSS modules - for styles
+- Flexbox
+- CSS Grid
+- [React](https://reactjs.org/) - JS library
+- [TypeScript](https://www.typescriptlang.org/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I've used Material UI a lot and I've used the built in Typography component in a lot of my past projects. But I wanted to make a somewhat similar implementation of it. So I went ahead with this approach. It worked fine for the purpose of this project.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+const variantsMapping: Record<(typeof variants)[number], keyof JSX.IntrinsicElements> = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  subheading1: 'h6',
+  subheading2: 'h6',
+  body1: 'p',
+  body2: 'p',
+  caption1: 'p',
+  caption2: 'p',
+}
 
-## Learn More
+interface TypographyProps {
+  variant?: keyof typeof variantsMapping
+  color?: string
+  children: ReactNode
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const Typography: FC<TypographyProps> = ({ variant, color, children, ...props }) => {
+  const Component: keyof JSX.IntrinsicElements = variant ? variantsMapping[variant] : 'p'
+  return (
+    <Component
+      className={`typography--variant-${variant}`}
+      style={{
+        color: color
+          ? color.includes('color')
+            ? `var(--${color})`
+            : color
+          : 'var(--color-neutral-dark)',
+      }}
+      {...props}
+    >
+      {children}
+    </Component>
+  )
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Useful resources
+
+- [React custom hooks - why they are so good](https://kyleshevlin.com/use-encapsulation) - I really liked this pattern and have been using it for quite a while now.
+
+## Author
+
+- Website - [Jagjot Singh](https://jagjot-singh.vercel.app/)
+- Frontend Mentor - [@jagjot26](https://www.frontendmentor.io/profile/jagjot26)
+- Twitter - [@jagsing26](https://twitter.com/jagsing26)

@@ -1,19 +1,9 @@
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 import styles from '../../pages/Main/styles.module.css'
 import Button from '../UI/Button'
 import Typography from '../UI/Typography'
 import { BillInfoType } from '../../pages/Main'
-
-const values = [
-  {
-    name: 'Tip Amount',
-    value: 0,
-  },
-  {
-    name: 'Total',
-    value: 0,
-  },
-]
+import useCalculatedValues from './hooks/useCalculatedValues'
 
 interface PerPersonValuesProps {
   billInfo: BillInfoType
@@ -21,21 +11,7 @@ interface PerPersonValuesProps {
 }
 
 const PerPersonValues: FC<PerPersonValuesProps> = ({ billInfo, handleReset }) => {
-  const { billAmount, tipPercent, numberOfPeople } = billInfo
-
-  const perPersonValues: typeof values = useMemo(() => {
-    const billAmountValue = +billAmount
-    const numberOfPeopleValue = +numberOfPeople
-    const calculatedValues = values
-    calculatedValues[0].value = 0
-    calculatedValues[1].value = 0
-    if (!tipPercent || billAmountValue <= 0 || numberOfPeopleValue <= 0)
-      return calculatedValues
-    const tipAmount = (tipPercent / 100) * billAmountValue
-    calculatedValues[0].value = tipAmount / numberOfPeopleValue //tip per person
-    calculatedValues[1].value = (billAmountValue + tipAmount) / numberOfPeopleValue //total per person
-    return calculatedValues
-  }, [tipPercent, billAmount, numberOfPeople])
+  const perPersonValues = useCalculatedValues({ billInfo })
 
   return (
     <div className={styles.rightHalf}>
