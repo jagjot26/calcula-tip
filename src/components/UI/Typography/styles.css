@@ -1,0 +1,43 @@
+.typography--variant-h1 {
+    font-size: clamp(3rem, 1rem + 5vw, 7rem);
+  }
+  
+  .typography--variant-h2 {
+    font-size: clamp(2.5rem, 1rem + 5vw, 6rem);
+  }
+  
+  .typography--variant-h3 {
+    font-size: clamp(2rem, 1rem + 5vw, 5rem);
+  }
+  
+  .typography--variant-h4 {
+    font-size: clamp(1.5rem, 1rem + 5vw, 4rem);
+  }
+  
+  .typography--variant-h5 {
+    font-size: clamp(1.3rem, 1rem + 5vw, 2.95rem);
+  }
+  
+  .typography--variant-h6 {
+    font-size: 1.25rem;
+  }
+  
+  .typography--variant-subheading1 {
+    font-size: clamp(1.4rem, 1rem + 5vw, 4rem);
+  }
+  
+  .typography--variant-subheading2 {
+    font-size: 0.875rem;
+  }
+  
+  .typography--variant-body1 {
+    font-size: clamp(1.3rem, 1rem + 5vw, 2rem);
+  }
+  
+  .typography--variant-body2 {
+    font-size: clamp(1.2rem, 1rem + 5vw, 1.8rem);
+  }
+
+  .typography--variant-subtitle1 {
+    font-size: clamp(1.1rem, 1rem + 5vw, 1.5rem);
+  }

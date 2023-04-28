@@ -1,0 +1,41 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.container {
+  all: unset;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input {
+  text-align: right;
+  border-radius: 4px;
+  background-color: var(--color-neutral-lighter);
+  padding: 1.2vmin;
+  color: var(--color-neutral-darker);
+  font-weight: 700;
+  font-family: 'Space Mono';
+  font-size: clamp(1.2rem, 1rem + 5vw, 2.4rem);
+  border: 1.5px solid transparent;
+}
+
+.input:focus {
+  outline: none;
+  border: 1.5px solid;
+  border-color: var(--color-primary);
+}
+
+.icon {
+  position: absolute;
+  left: 1.2vmin;
+}
