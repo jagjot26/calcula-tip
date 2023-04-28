@@ -16,7 +16,7 @@
 .container {
   background-color: var(--color-white);
   height: 52vh;
-  width: 60%;
+  width: 64%;
   border-radius: 1.2rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   padding: 4.5vmin;
@@ -48,8 +48,14 @@
     width: 100%;
     flex: 1;
     flex-flow: column;
+    padding: 3rem;
   }
   .leftHalf {
     width: 100%;
+    row-gap: 2rem;
+  }
+  .buttonsGridContainer {
+    gap: 1rem;
+    grid-template-columns: auto auto;
   }
 }

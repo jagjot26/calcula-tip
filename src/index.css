@@ -33,12 +33,12 @@ body {
 }
 
 /* for retina-specific (macbook air) */
-@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1500px) and (min-width: 1200px),
-  only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1500px) and (min-width: 1200px),
-  only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1500px) and (min-width: 1200px),
-  only screen and (min-device-pixel-ratio: 2) and (max-width: 1500px) and (min-width: 1200px),
-  only screen and (min-resolution: 192dpi) and (max-width: 1500px) and (min-width: 1200px),
-  only screen and (min-resolution: 2dppx) and (max-width: 1500px) and (min-width: 1200px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1500px) and (min-width: 1100px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1500px) and (min-width: 1100px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1500px) and (min-width: 1100px),
+  only screen and (min-device-pixel-ratio: 2) and (max-width: 1500px) and (min-width: 1100px),
+  only screen and (min-resolution: 192dpi) and (max-width: 1500px) and (min-width: 1100px),
+  only screen and (min-resolution: 2dppx) and (max-width: 1500px) and (min-width: 1100px) {
   html {
     font-size: 45%;
   }

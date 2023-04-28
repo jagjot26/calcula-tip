@@ -15,12 +15,19 @@ const Main = () => {
     numberOfPeople: '',
   })
   const { billAmount, tipPercent, numberOfPeople } = billInfo
+  const [errors, setErrors] = useState<Record<string, string>>({})
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target
-    let updatedValue: string | number = value
-    if (type === 'number') updatedValue = Math.abs(+updatedValue)
-    setBillInfo((prev) => ({ ...prev, [name]: `${updatedValue}` }))
+    setBillInfo((prev) => ({ ...prev, [name]: `${value}` }))
+    if (value === '0') setErrors((prev) => ({ ...prev, [name]: "Can't be 0" }))
+    else {
+      if (errors[name]) {
+        const tempErrors = { ...errors }
+        delete tempErrors[name]
+        setErrors(tempErrors)
+      }
+    }
   }
 
   const updateTip = (e: any) => {
@@ -44,6 +51,8 @@ const Main = () => {
               onChange={handleChange}
               value={billAmount}
               min="0"
+              error={errors.billAmount}
+              autoFocus
             />
           </div>
           <div>
@@ -69,6 +78,7 @@ const Main = () => {
               onChange={handleChange}
               value={numberOfPeople}
               min="0"
+              error={errors.numberOfPeople}
             />
           </div>
         </div>
