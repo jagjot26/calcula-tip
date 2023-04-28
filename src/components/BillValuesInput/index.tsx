@@ -22,7 +22,9 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
   errors,
 }) => {
   const { billAmount, tipPercent, numberOfPeople } = billInfo
-  const showCustomPlaceholder = useRef(false)
+  const customTipFieldFocused = useRef(false)
+  const showCustomPlaceholder =
+    !customTipFieldFocused.current && tipPercents.includes(tipPercent)
 
   return (
     <div className={styles.leftHalf}>
@@ -58,11 +60,11 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
               min="0"
               type="number"
               name="tipPercent"
-              value={showCustomPlaceholder.current ? '' : tipPercent}
+              value={showCustomPlaceholder ? '' : tipPercent}
               placeholder="Custom"
               onChange={handleChange}
-              onFocus={() => (showCustomPlaceholder.current = false)}
-              onBlur={() => (showCustomPlaceholder.current = true)}
+              onFocus={() => (customTipFieldFocused.current = true)}
+              onBlur={() => (customTipFieldFocused.current = false)}
             />
           </div>
         </div>
