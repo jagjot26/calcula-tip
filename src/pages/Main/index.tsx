@@ -10,9 +10,9 @@ const tipPercents = [5, 10, 15, 25, 50]
 
 const Main = () => {
   const [billInfo, setBillInfo] = useState({
-    billAmount: '0',
+    billAmount: '',
     tipPercent: 0,
-    numberOfPeople: '0',
+    numberOfPeople: '',
   })
   const { billAmount, tipPercent, numberOfPeople } = billInfo
 
@@ -23,6 +23,10 @@ const Main = () => {
     setBillInfo((prev) => ({ ...prev, [name]: `${updatedValue}` }))
   }
 
+  const updateTip = (e: any) => {
+    setBillInfo((prev) => ({ ...prev, tipPercent: +e.target.value }))
+  }
+
   return (
     <section className={styles.background}>
       <div className={styles.header}>
@@ -31,28 +35,42 @@ const Main = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.leftHalf}>
-          <Typography variant="body1">Bill</Typography>
-          <Input
-            icon={<DollarIcon />}
-            name="billAmount"
-            type="number"
-            onChange={handleChange}
-            value={billAmount}
-            min="0"
-          />
-          <Typography variant="body1">Select Tip %</Typography>
-          {tipPercents.map((percent) => (
-            <Button>{`${percent}%`}</Button>
-          ))}
-          <Typography variant="body1">Number of People</Typography>
-          <Input
-            icon={<PeopleIcon />}
-            name="numberOfPeople"
-            type="number"
-            onChange={handleChange}
-            value={numberOfPeople}
-            min="0"
-          />
+          <div>
+            <Typography variant="body1">Bill</Typography>
+            <Input
+              icon={<DollarIcon />}
+              name="billAmount"
+              type="number"
+              onChange={handleChange}
+              value={billAmount}
+              min="0"
+            />
+          </div>
+          <div>
+            <Typography variant="body1">Select Tip %</Typography>
+            <div className={styles.buttonsGridContainer}>
+              {tipPercents.map((percent) => (
+                <div className={styles.buttonsGridItem} key={percent}>
+                  <Button
+                    inverted={percent === tipPercent ? true : false}
+                    value={percent}
+                    onClick={updateTip}
+                  >{`${percent}%`}</Button>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <Typography variant="body1">Number of People</Typography>
+            <Input
+              icon={<PeopleIcon />}
+              name="numberOfPeople"
+              type="number"
+              onChange={handleChange}
+              value={numberOfPeople}
+              min="0"
+            />
+          </div>
         </div>
         <div></div>
       </div>
