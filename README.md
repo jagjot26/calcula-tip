@@ -26,7 +26,10 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<img width="1436" alt="Screenshot 2023-04-29 at 12 44 39 AM" src="https://user-images.githubusercontent.com/51400182/235234431-971fbd53-4068-4d29-952d-03dbda6e8cbd.png">
+<img width="345" alt="Screenshot 2023-04-29 at 12 44 22 AM" src="https://user-images.githubusercontent.com/51400182/235234437-da4cbe1b-4fc6-4ca6-9dbb-d198576a900a.png">
+<img width="1436" alt="Screenshot 2023-04-29 at 12 44 03 AM" src="https://user-images.githubusercontent.com/51400182/235234442-55978c8c-5e9c-46de-b516-63ba95b5f9f3.png">
+shot.jpg)
 
 ### Links
 
