@@ -39,11 +39,16 @@ interface TypographyProps {
 
 const Typography: FC<TypographyProps> = ({ variant, color, children, ...props }) => {
   const Component: keyof JSX.IntrinsicElements = variant ? variantsMapping[variant] : 'p'
-
   return (
     <Component
       className={`typography--variant-${variant}`}
-      style={{ color: color ? color : `var(color-neutral-dark)` }}
+      style={{
+        color: color
+          ? color.includes('color')
+            ? `var(--${color})`
+            : color
+          : 'var(--color-neutral-dark)',
+      }}
       {...props}
     >
       {children}

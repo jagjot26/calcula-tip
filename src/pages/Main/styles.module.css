@@ -21,6 +21,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   padding: 4.5vmin;
   display: flex;
+  column-gap: 7vmin;
 }
 
 .leftHalf {
@@ -39,6 +40,27 @@
 .buttonsGridItem {
 }
 
+.rightHalf {
+  background-color: var(--color-neutral-darker);
+  width: 50%;
+  border-radius: 1.2rem;
+  padding: 4vmin;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.perPersonContainer {
+  display: flex;
+  flex-flow: column;
+  row-gap: 3.5vmin;
+}
+
+.perPersonRow {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 750px) {
   .header {
     margin-top: 3vh;
@@ -53,6 +75,9 @@
   .leftHalf {
     width: 100%;
     row-gap: 2rem;
+  }
+  .rightHalf {
+    width: 100%;
   }
   .buttonsGridContainer {
     gap: 1rem;

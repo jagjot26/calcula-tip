@@ -17,6 +17,19 @@ const Main = () => {
   const { billAmount, tipPercent, numberOfPeople } = billInfo
   const [errors, setErrors] = useState<Record<string, string>>({})
 
+  const tipAmount = (tipPercent / 100) * +billAmount
+
+  const perPersonValues = [
+    {
+      name: 'Tip Amount',
+      value: (tipAmount / +numberOfPeople).toFixed(2),
+    },
+    {
+      name: 'Total',
+      value: ((+billAmount + tipAmount) / +numberOfPeople).toFixed(2) ?? 0,
+    },
+  ]
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target
     setBillInfo((prev) => ({ ...prev, [name]: `${value}` }))
@@ -32,6 +45,15 @@ const Main = () => {
 
   const updateTip = (e: any) => {
     setBillInfo((prev) => ({ ...prev, tipPercent: +e.target.value }))
+  }
+
+  const handleReset = () => {
+    setBillInfo({
+      billAmount: '',
+      tipPercent: 0,
+      numberOfPeople: '',
+    })
+    if (Object.keys(errors).length > 0) setErrors({})
   }
 
   return (
@@ -82,7 +104,30 @@ const Main = () => {
             />
           </div>
         </div>
-        <div></div>
+        <div className={styles.rightHalf}>
+          <div className={styles.perPersonContainer}>
+            {perPersonValues.map((info) => (
+              <div key={info.name} className={styles.perPersonRow}>
+                <div>
+                  <Typography variant="body1" color="color-neutral-light">
+                    {info.name}
+                  </Typography>
+                  <Typography variant="caption1" color="color-neutral-base">
+                    / person
+                  </Typography>
+                </div>
+                <Typography variant="h4" color="color-primary">
+                  {`$${info.value}`}
+                </Typography>
+              </div>
+            ))}
+          </div>
+          <Button inverted onClick={handleReset}>
+            <Typography variant="h4" color="color-neutral-darker">
+              RESET
+            </Typography>
+          </Button>
+        </div>
       </div>
     </section>
   )

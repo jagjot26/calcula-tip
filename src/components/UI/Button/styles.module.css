@@ -10,7 +10,7 @@
 }
 
 .default,
-.default:active:hover .inverted:hover,
+.default:active:hover,
 .inverted.active {
   background-color: var(--color-neutral-darker);
   color: var(--color-white);
@@ -22,7 +22,8 @@
   color: var(--color-neutral-darker);
 }
 
-.default:hover {
+.default:hover,
+.inverted:hover {
   opacity: 0.7;
 }
 
