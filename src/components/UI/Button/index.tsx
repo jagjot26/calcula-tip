@@ -5,13 +5,18 @@ import cn from 'classnames'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   inverted?: boolean
+  className?: string
 }
 
-const Button: FC<ButtonProps> = ({ children, inverted, ...props }) => {
+const Button: FC<ButtonProps> = ({ className, children, inverted, ...props }) => {
   return (
     <button
       {...props}
-      className={cn(styles.button, inverted ? styles.inverted : styles.default)}
+      className={cn(
+        styles.button,
+        inverted ? styles.inverted : styles.default,
+        className
+      )}
     >
       {children}
     </button>

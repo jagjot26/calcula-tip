@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 import useHandlers from './hooks/useHandlers'
 
 const Main = () => {
-  const {billInfo, errors, handleChange, updateTip, handleReset}  = useHandlers()
+  const { billInfo, errors, handleChange, updateTip, handleReset } = useHandlers()
 
   return (
     <section className={styles.background}>

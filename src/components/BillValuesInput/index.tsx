@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import styles from '../../pages/Main/styles.module.css'
 import Input from '../UI/Input'
 import Typography from '../UI/Typography'
@@ -22,6 +22,8 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
   errors,
 }) => {
   const { billAmount, tipPercent, numberOfPeople } = billInfo
+  const showCustomPlaceholder = useRef(false)
+
   return (
     <div className={styles.leftHalf}>
       <div>
@@ -46,7 +48,9 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
                 inverted={percent === tipPercent ? true : false}
                 value={percent}
                 onClick={updateTip}
-              >{`${percent}%`}</Button>
+              >
+                {`${percent}%`}
+              </Button>
             </div>
           ))}
           <div>
@@ -54,9 +58,11 @@ const BillValuesInput: FC<BillValuesInputProps> = ({
               min="0"
               type="number"
               name="tipPercent"
-              value={tipPercents.includes(tipPercent) ? '' : tipPercent}
+              value={showCustomPlaceholder.current ? '' : tipPercent}
               placeholder="Custom"
               onChange={handleChange}
+              onFocus={() => (showCustomPlaceholder.current = false)}
+              onBlur={() => (showCustomPlaceholder.current = true)}
             />
           </div>
         </div>
