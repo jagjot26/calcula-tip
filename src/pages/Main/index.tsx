@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import Typography from '../../components/UI/Typography'
-import styles from './styles.module.css'
 import PerPersonValues from '../../components/PerPersonValues'
 import BillValuesInput from '../../components/BillValuesInput'
+import styles from './styles.module.css'
 
 export type BillInfoType = {
   billAmount: string
@@ -18,22 +18,26 @@ const Main = () => {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type } = e.target
-    setBillInfo((prev) => ({ ...prev, [name]: `${value}` }))
-    if (value === '0') setErrors((prev) => ({ ...prev, [name]: "Can't be 0" }))
-    else {
-      if (errors[name]) {
-        const tempErrors = { ...errors }
-        delete tempErrors[name]
-        setErrors(tempErrors)
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      setBillInfo((prev) => ({ ...prev, [name]: `${value}` }))
+      if (value !== '' && (value === '0' || !e.target.validity.valid)) {
+        setErrors((prev) => ({ ...prev, [name]: 'This value is not allowed' }))
+      } else {
+        if (errors[name]) {
+          const tempErrors = { ...errors }
+          delete tempErrors[name]
+          setErrors(tempErrors)
+        }
       }
-    }
-  }
+    },
+    [errors]
+  )
 
-  const updateTip = (e: any) => {
+  const updateTip = useCallback((e: any) => {
     setBillInfo((prev) => ({ ...prev, tipPercent: +e.target.value }))
-  }
+  }, [])
 
   const handleReset = useCallback(() => {
     setBillInfo({

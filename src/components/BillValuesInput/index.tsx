@@ -8,7 +8,6 @@ import Button from '../UI/Button'
 import { BillInfoType } from '../../pages/Main'
 
 const tipPercents = [5, 10, 15, 25, 50]
-
 interface BillValuesInputProps {
   billInfo: BillInfoType
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
